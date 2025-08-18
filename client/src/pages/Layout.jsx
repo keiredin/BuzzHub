@@ -3,13 +3,14 @@ import Sidebar from "../components/Sidebar";
 import { Outlet } from "react-router";
 import { Menu, X } from "lucide-react";
 import { dummyUserData } from "../assets/assets";
+import Loading from "../components/Loading";
 
 const Layout = () => {
   const user = dummyUserData;
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return user ? (
     <div className="w-full flex h-screen">
-      <Sidebar />
+      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       <div className="flex-1 bg-slate-50">
         <Outlet />
       </div>
@@ -29,7 +30,7 @@ const Layout = () => {
       )}
     </div>
   ) : (
-    <h1>Loading</h1>
+    <Loading />
   );
 };
 
